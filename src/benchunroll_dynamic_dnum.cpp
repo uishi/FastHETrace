@@ -325,26 +325,15 @@ int main(int argc, char* argv[])
   
   vector<vector<usint>> auto_indices_par;
 
-  auto time_offline = EvalSumKeyGenUnroll(cc, keys, M, num_unroll, auto_indices_par);
+  EvalSumKeyGenUnroll(cc, keys, M, num_unroll, auto_indices_par);
   cc->EvalMultKeyGen(keys.secretKey);
 
+  // This step should be performed at lower-level
   for(auto vec: auto_indices_par)
     for (auto id: vec)
       PreComputeEvk(cc, id, cipher, inv_evks);
 
-	{
-    string off_outfile = "/tmp/result/LweRlwePalisadeKeyGen/evalsum_AutoOpt_unroll_div_optimize_HK_logN" + to_string(logN)
-      + "_M"  + to_string(M)
-      + "_depth"  + to_string(depth)
-      + "_numunroll"   + to_string(num_unroll)
-      + "_scale"  + to_string(scale)
-      + "_numth"  + to_string(num_thread)
-      + "_dnum"   + to_string(dnum)
-      + "_numexp" + to_string(numExp)
-      + ".txt";
-		ofstream offofs(off_outfile);
-		offofs << time_offline << "," << ((double)(getPeakRSS()) / (1 << 20)) << endl;
-	}
+
 	int numkeys = 0;
 	for (auto key_vec:auto_indices_par)
 	{

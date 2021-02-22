@@ -335,21 +335,8 @@ int main(int argc, char* argv[])
   CryptoContext<DCRTPoly> cc;
 	LPKeyPair<DCRTPoly> keys;
   vector<usint> auto_indices_seq;
-  double offline_timing = TraceSeqHKOffline(logN, num_itr, multDepth, scale, dnum, cc, keys, auto_indices_seq, false);
+  TraceSeqHKOffline(logN, num_itr, multDepth, scale, dnum, cc, keys, auto_indices_seq, false);
   cc->EvalMultKeyGen(keys.secretKey);
-
-  ofstream ofsoff("/tmp/result/LweRlwePalisadeKeyGen/trace_HK_logN"
-	  +             to_string(logN)
-  	+ "_depth"  + to_string(multDepth) 
-  	+ "_scale"  + to_string(scale) 
-    + "_numth"  + to_string(num_thread)
-    + "_dnum"   + to_string(dnum)
-		+	"_numexp" + to_string(numExp)
-		+ ".txt");
-
-  ofsoff << offline_timing << "," << ((double)(getPeakRSS()) / (1 << 20) );
-	ofsoff.close();
-
 
 #ifdef USE_FAST_AUTOMORPH
   cout << "Fast Automorph" << endl;
