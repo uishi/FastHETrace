@@ -15,8 +15,7 @@ This repository provides two set of codes:
 
 ## Prerequisities
 
-  - Modified version of PALSIADE v1.9.2
-
+  - [Modified version of PALSIADE v1.9.2](https://github.com/uishi/Modified_PALISADEv1.9.2) 
     -> We have added faster automorphism via simple permutation. To do this, we addded `Permute` function in poly.h/cpp and DCRTPoly.h. Note that the faster automorphism is applied to both methods to conduct fair comparison.
 
 ## Build and run
