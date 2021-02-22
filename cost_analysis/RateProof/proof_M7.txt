@@ -1,0 +1,7 @@
+M = 7
+h=1: C(1) < C(2) when CH/CIP > 105
+h=2: C(2) < C(3) when CH/CIP > 9
+h=3: C(3) < C(4) when CH/CIP > 3
+h=4: C(4) < C(5) when CH/CIP > 1
+h=5: C(5) < C(6) when CH/CIP > 1
+h=6: C(6) < C(7) when CH/CIP > 1

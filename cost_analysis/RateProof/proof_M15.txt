@@ -1,0 +1,15 @@
+M = 15
+h=1: C(1) < C(2) when CH/CIP > 32385
+h=2: C(2) < C(3) when CH/CIP > 289
+h=3: C(3) < C(4) when CH/CIP > 41
+h=4: C(4) < C(5) when CH/CIP > 17
+h=5: C(5) < C(6) when CH/CIP > 5
+h=6: C(6) < C(7) when CH/CIP > 5
+h=7: C(7) < C(8) when CH/CIP > 3
+h=8: C(8) < C(9) when CH/CIP > 1
+h=9: C(9) < C(10) when CH/CIP > 1
+h=10: C(10) < C(11) when CH/CIP > 1
+h=11: C(11) < C(12) when CH/CIP > 1
+h=12: C(12) < C(13) when CH/CIP > 1
+h=13: C(13) < C(14) when CH/CIP > 1
+h=14: C(14) < C(15) when CH/CIP > 1
