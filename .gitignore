@@ -11,6 +11,7 @@ CTestTestfile.cmake
 **/build/*
 **/CMakeFiles/*
 **/memo/*
+**/__pycache__/*
 
 # vscode
 **/.vscode/**
