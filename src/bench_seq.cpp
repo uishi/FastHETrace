@@ -252,7 +252,12 @@ double TraceSeqHybridOnline(
 	  c = cc->EvalMult(c, c1);
 	  c = cc->Rescale(c);
 	}
-	cout << "# Dropped = " << c->GetLevel()  << " # MODs Available = " << (L+1) - c->GetLevel()<< endl;
+	cout << "# Mods (Dropped = "
+       << c->GetLevel()  
+	     << ", Available = " 
+			 << (L+1) - c->GetLevel()
+			 << ")"
+			 << endl;
 
 	TimeVar t;
 	TIC(t);
@@ -265,9 +270,9 @@ double TraceSeqHybridOnline(
 	for (long i = 0; i<num_seq; ++i)
 	  c += cc->EvalAutomorphism(c, auto_indices_seq[i], cc->GetEvalAutomorphismKeyMap(c->GetKeyTag()));
 #endif
-	double timeHoisting = TOC(t);
+	double timing = TOC(t);
 
-	cout << "Timing: " << timeHoisting << " ms" << endl;
+	cout << "Timing: " << timing << " ms" << endl;
 
 	Plaintext result;
 	cc->Decrypt(keys.secretKey, c, &result);
@@ -293,13 +298,11 @@ double TraceSeqHybridOnline(
   }
 
   if (num_ans == num_expected_ans)
-    cout << " correct :) #1 = "  << num_ans  << " Expected = " << num_expected_ans << endl;
+    cout << " correct :) #" << ans << " = "  << num_ans  << " Expected = " << num_expected_ans << endl;
   else
-    cout << "      wrong #1 = " << num_ans << " Expected = " << num_expected_ans <<endl;
+    cout << "      wrong #" << ans << " = " << num_ans << " Expected = " << num_expected_ans <<endl;
 
-
-
-	return timeHoisting;
+	return timing;
 }
 
 int main(int argc, char* argv[])

@@ -44,7 +44,12 @@ double EvalTraceUnrollHKOnline(
    c = cc->EvalMult(c, c1);
 	 c = cc->Rescale(c);
 	}
-  cout << "# Dropped = " << c->GetLevel()  << " # MODs Available = " << (L+1) - c->GetLevel()<< endl;
+  cout << "# Mods (Dropped = "
+	     << c->GetLevel()
+			 << ", Available = " 
+			 << (L+1) - c->GetLevel()
+			 << ")"
+			 << endl;
 
   // First, we perform 7 regular (non-hoisted) rotations
   // and measure the runtime.
@@ -71,13 +76,13 @@ double EvalTraceUnrollHKOnline(
     // ModDown and addit to the original
     c += EvalModDownIntermediate(c_tmp, merge_sum);
 	}
-  double timeHoisting = TOC(t);
+  double timing = TOC(t);
 
   Plaintext result;
   cc->Decrypt(keys.secretKey, c, &result);
   result->SetLength(5);
   cout << "\t Result = " << result << endl;
-  cout << "Timing = " << timeHoisting << " ms...";
+  cout << "Timing = " << timing << " ms...";
 
 	auto m = cc->GetCyclotomicOrder();
 
@@ -98,11 +103,11 @@ double EvalTraceUnrollHKOnline(
 	}
 
   if (num_ans == num_expected_ans)
-    cout << " correct :) #1 = "  << num_ans  << " Expected = " << num_expected_ans << endl;
+    cout << " correct :) #" << ans << " = "  << num_ans  << " Expected = " << num_expected_ans << endl;
   else
-    cout << "      wrong #1 = " << num_ans << " Expected = " << num_expected_ans <<endl;
+    cout << "      wrong #" << ans << " = " << num_ans << " Expected = " << num_expected_ans <<endl;
 
-  return timeHoisting;
+  return timing;
 }
 
 double EvalTraceUnrollHKMult(
@@ -136,13 +141,13 @@ double EvalTraceUnrollHKMult(
 
   for (size_t numitr = 0; numitr < num_unroll; ++numitr)
       c += EvalHoistedAutomorph(c, auto_indices_parallel[numitr], inv_evks);
-  double timeHoisting = TOC(t);
+  double timing = TOC(t);
 
   Plaintext result;
   cc->Decrypt(keys.secretKey, c, &result);
   result->SetLength(5);
   cout << "\t Result = " << result << endl;
-  cout << "Timing = " << timeHoisting << " ms...";
+  cout << "Timing = " << timing << " ms...";
 
 	auto m = cc->GetCyclotomicOrder();
 
@@ -167,7 +172,7 @@ double EvalTraceUnrollHKMult(
   else
     cout << "      wrong #1 = " << num_ans << " Expected = " << num_expected_ans <<endl;
 
-  return timeHoisting;
+  return timing;
 }
 
 double EvalTraceUnrollSingleTh(
@@ -205,13 +210,13 @@ double EvalTraceUnrollSingleTh(
   for (size_t numitr = 0; numitr < num_unroll; ++numitr)
     c += EvalHoistedAutomorphHKSingleTh(c, auto_indices_parallel[numitr], inv_evks);
 
-  double timeHoisting = TOC(t);
+  double timing = TOC(t);
 
   Plaintext result;
   cc->Decrypt(keys.secretKey, c, &result);
   result->SetLength(5);
   cout << "\t Result = " << result << endl;
-  cout << "Timing = " << timeHoisting << " ms...";
+  cout << "Timing = " << timing << " ms...";
 
 	auto m = cc->GetCyclotomicOrder();
 
@@ -236,7 +241,7 @@ double EvalTraceUnrollSingleTh(
   else
     cout << "      wrong #1 = " << num_ans << " Expected = " << num_expected_ans <<endl;
 
-  return timeHoisting;
+  return timing;
 }
 
 
