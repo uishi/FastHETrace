@@ -18,12 +18,12 @@ This repository provides two sets of codes:
 
     -> added faster automorphism via simple permutation (`Permute` function in poly.h/cpp and DCRTPoly.h). 
 		
-		Note that the faster automorphism is applied to both 1-1) and 1-2) to conduct fair comparison.
+The faster automorphism is applied to both 1-1) and 1-2) to conduct fair comparison.
 
 ## Build and run
 
 ```
-   mkdir build && cd build && cmake .. & make
+   mkdir build && cd build && cmake .. && make
 ```
 
 #### Unrolling
@@ -63,10 +63,7 @@ e.g.
 	 T: the number of experiments to perform 
 	
 
-# 2) Cost Analysis
-
-  The cost analysis is written in python3.
-
+# 2) Cost Analysis 
 
 ## Reproducing Figures in Theoretical Analysis
 
