@@ -1,13 +1,12 @@
 # FasterHETrace
 
-
-This repository provides two set of codes: 
+This repository provides two sets of codes: 
 
   1) Implementation of faster trace (C++)
 
-	   1-1) benchunroll.cpp  implementation of our unrolled trace
+	   1-1) bench_unroll.cpp  implementation of our unrolled trace
 
-	   1-2) bench_seq.cpp  implementation of the sequential method (rotations-and-sums a.k.a. repeat-and-double)
+	   1-2) bench_seq.cpp  implementation of the sequential trace (rotations-and-sums method)
 
   2) Cost analysis in terms of modular multiplications (python3)
 
@@ -16,7 +15,10 @@ This repository provides two set of codes:
 ## Prerequisities
 
   - [Modified version of PALSIADE v1.9.2](https://github.com/uishi/Modified_PALISADEv1.9.2) 
-    -> We have added faster automorphism via simple permutation. To do this, we addded `Permute` function in poly.h/cpp and DCRTPoly.h. Note that the faster automorphism is applied to both methods to conduct fair comparison.
+
+    -> added faster automorphism via simple permutation (`Permute` function in poly.h/cpp and DCRTPoly.h). 
+		
+		Note that the faster automorphism is applied to both 1-1) and 1-2) to conduct fair comparison.
 
 ## Build and run
 
@@ -24,11 +26,11 @@ This repository provides two set of codes:
    mkdir build && cd build && cmake .. & make
 ```
 
-  Exectuable binary files are generated, that can be run as follows.
+-> Exectuable files are generated, that can be run as follows.
 
 ```
-   ./benchunroll 13 13 7 2 35 3 1 11
-   ./bench_seq   13 13   2 35 3   11
+   ./bench_unroll 13 13 7 3 2 35 1 11
+   ./bench_seq    13 13   3 2 35 1 11
 ```
  This tells the difference between two methods with a small set of HE parameters.
 
@@ -36,15 +38,15 @@ This repository provides two set of codes:
 
 #### Unrolling
 
-      ./benchunroll [log N] [M] [h] [L] [ell] [Delta] [d] [T]
+      ./bench_unroll [logN] [M] [h] [L] [ell] [Delta] [d] [T]
 
 #### Rotations-and-sums
 
-     ./bench_seq [log N] [M] [L] [ell] [Delta] [d] [T]
+     ./bench_seq     [logN] [M]     [L] [ell] [Delta] [d] [T]
 
 #### Description of each argument
 
-	 \log_N:  ring dimension
+	 log N:  ring dimension
 
 	 M: # iterations for rotations-and-sums
 
@@ -56,14 +58,12 @@ This repository provides two set of codes:
 
 	 Delta: scaling factor for the CKKS encoding
 
-	 d: maximum number of digit for key-switching (an integer that divides L)
+	 d: maximal number of digit for key-switching (an integer that divides L)
 	 
-	 ---> the number of special moduli is determined by k = (L+1)/d
+	 ---> # of special moduli is determined by k = (L+1)/d
 
 	 T: the number of experiments to perform 
 	
-
-
 
 # 2) Cost Analysis
 

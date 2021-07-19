@@ -43,5 +43,5 @@ include_directories( ${OPENMP_INCLUDES} )
 link_directories( ${OPENMP_LIBRARIES} )
 message("CMAKE FLAGS = ${CMAKE_CXX_FLAGS}")
 
-add_executable(benchunroll_dynamic_dnum  benchunroll_dynamic_dnum.cpp)
-add_executable(bench_seq_dynamic_dnum  bench_seq_dynamic_dnum.cpp)
+add_executable(bench_unroll bench_unroll.cpp)
+add_executable(bench_seq bench_seq.cpp)
