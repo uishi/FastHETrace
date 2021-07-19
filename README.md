@@ -8,7 +8,7 @@ This repository provides two sets of codes:
 
 	   1-2) bench_seq.cpp  implementation of the sequential trace (rotations-and-sums method)
 
-  2) Cost analysis in terms of modular multiplications (python3)
+  2) Cost analysis in terms of # modular multiplications (python3)
 
 # 1) Implementation with PALISADE (on the CKKS scheme)
 
@@ -50,7 +50,7 @@ e.g.
 
 	 h: # unrolled-iterations
 
-	 L: maximum level (the number of RNS moduli for this level is L + 1)
+	 L: maximal level (the number of RNS moduli for this level is L + 1)
 
 	 ell: level to examine (the number of RNS moduli is \ell + 1 where \ell <= L)
 
@@ -70,7 +70,7 @@ e.g.
 
 ## Reproducing Figures in Theoretical Analysis
 
-   Assuming you are under  `./FasterHETrace`,  run the followings:
+      ./init_resulting_directory.sh
 
       cd ./cost_analysis
   
@@ -78,6 +78,8 @@ e.g.
 ### Figure 1 (Rate)
 
      python3 run_plot_fig1_ell_vs_rate.py
+
+ -> choose 1 and press enter
 
  Plots are stored in `/tmp/result/no_last_digit_rate/`.
 

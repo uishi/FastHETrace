@@ -66,7 +66,8 @@ if __name__ == "__main__" :
     for k in range(1, L+2):
         if (L + 1) % k ==0:
             ks.append(k)
-    print("Fixing k anc see variable ell? Yes 1: No (Fixed=ell, var k): 0")
+
+    print("Choose \n[0] variable k and fixed ell or\n[1] Fixed k and variable ell")
     is_k_fix = int(input())
     print("M={}",format(M))
     if is_k_fix > 0:
