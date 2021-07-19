@@ -26,15 +26,6 @@ This repository provides two sets of codes:
    mkdir build && cd build && cmake .. & make
 ```
 
--> Exectuable files are generated, that can be run as follows.
-
-```
-   ./bench_unroll 14 14 7 3 2 35 1 11
-   ./bench_seq    14 14   3 2 35 1 11
-```
- This tells the difference between two methods with a small set of HE parameters.
-
-
 #### Unrolling
 
       ./bench_unroll [logN] [M] [h] [L] [ell] [Delta] [d] [T]
