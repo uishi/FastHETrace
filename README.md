@@ -34,15 +34,22 @@ This repository provides two sets of codes:
 ```
  This tells the difference between two methods with a small set of HE parameters.
 
-### Arguments to provide
 
 #### Unrolling
 
       ./bench_unroll [logN] [M] [h] [L] [ell] [Delta] [d] [T]
 
+e.g.
+
+      ./bench_unroll 14 14 7 3 2 35 4 11
+
 #### Rotations-and-sums
 
      ./bench_seq     [logN] [M]     [L] [ell] [Delta] [d] [T]
+
+e.g.
+
+     ./bench_seq 14 14 3 2 35 4 11
 
 #### Description of each argument
 
